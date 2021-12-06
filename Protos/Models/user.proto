@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcLastLetter";
+
+package last_letter;
+
+
+message User {
+  string id = 1;
+  string name = 2;
+}
+
+message UserList {
+  repeated User users = 1;
+}

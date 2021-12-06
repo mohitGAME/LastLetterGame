@@ -1,0 +1,27 @@
+Sprint 1 : 
+    1. A message window/app to send and recieve message.
+
+two player
+message via socket / grpc 
+message verification with ai model
+increase points 
+
+---- learn mode with
+
+
+docker exec -it some-redis redis-cli
+----------------------------------------------------------------------------------
+
+GRPC basic api's : 
+        1. Create User 
+        2. Login  
+        3. Delete User
+        4. Update User
+
+ 
+
+
+
+ 
+
+ 
