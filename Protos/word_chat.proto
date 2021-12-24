@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcLastLetter";
+
+package last_letter;
+
+service WordChat {
+  rpc ReceiveWord( WordRequest) returns (WordResponse) {}
+}
+
+message WordRequest {
+  string from = 1;
+}
+
+message WordResponse {
+  bool is_valid = 1;
+}
+
+// message Empty {}
+

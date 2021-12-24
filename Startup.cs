@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 
+
 namespace GrpcLastLetter
 {
     public class Startup
@@ -19,9 +20,25 @@ namespace GrpcLastLetter
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddSingleton<SymSpell>(serviceProvider =>
+            {
+                // CreateHostBuilder(args).Build().Run();
+                //create object
+                int initialCapacity = 82765;
+                int maxEditDistanceDictionary = 2; //maximum edit distance per dictionary precalculation
+                var symSpell = new SymSpell(initialCapacity, maxEditDistanceDictionary);
+
+                //load dictionary
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string dictionaryPath = baseDirectory + "../../../SymSpell/frequency_dictionary_en_82_765.txt";
+                int termIndex = 0;  //column of the term in the dictionary text file
+                int countIndex = 1; //column of the term frequency in the dictionary text file
+                symSpell.LoadDictionary(dictionaryPath, termIndex, countIndex);
+                return symSpell;
+            });
         }
 
-        
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

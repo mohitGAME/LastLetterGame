@@ -7,8 +7,8 @@ namespace GrpcLastLetter.Data
 {
     public interface ILastLetterRepository
     {
-        UserList GetUsers();  
-        void CreateUser(User yrs);
+        // UserList GetUsers();  
+        // void CreateUser(User yrs);
 
     }
 }
